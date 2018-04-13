@@ -1,7 +1,9 @@
 package com.jkudla.drawingTest.drawing;
 
+import com.jkudla.drawingTest.board.Board;
 import com.jkudla.drawingTest.drawing.line.Line;
 import com.jkudla.drawingTest.drawing.line.LineValidator;
+import com.jkudla.drawingTest.exception.WrongParametersException;
 
 import java.util.List;
 
@@ -24,12 +26,12 @@ public enum DrawingEnum {
         return operation;
     }
 
-    public void validate(List<String> parameters){
+    public void validate(List<String> parameters) throws WrongParametersException {
         validator.validate(parameters);
     }
 
-    public void draw(List<String> parameters){
-        drawing.draw(parameters);
+    public void draw(Board board, List<String> parameters) {
+        drawing.draw(board, parameters);
     }
 
 

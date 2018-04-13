@@ -1,5 +1,6 @@
 package com.jkudla.drawingTest.command;
 
+import com.jkudla.drawingTest.drawing.DrawingEnum;
 import com.jkudla.drawingTest.exception.WrongCommandException;
 import org.junit.Rule;
 import org.junit.Test;
@@ -8,19 +9,54 @@ import org.junit.rules.ExpectedException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static com.jkudla.drawingTest.command.CommandController.MAX_OPERATION_LENGTH;
 import static com.jkudla.drawingTest.command.CommandController.NO_OPERATION;
+import static com.jkudla.drawingTest.command.CommandController.findDrawingByOperationName;
 import static com.jkudla.drawingTest.command.CommandController.findOperation;
 import static com.jkudla.drawingTest.command.CommandController.findParameters;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class CommandControllerTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    /** FIND OPERATION */
+    /**
+     * FIND DRAWING BY OPERATION NAME
+     */
+
+    @Test
+    public void test_findDrawingByOperationName_success() {
+        //given
+        String operationName = "L";
+
+        //when
+        Optional<DrawingEnum> drawingByOperationName = findDrawingByOperationName(operationName);
+
+        //then
+        assertTrue(drawingByOperationName.isPresent());
+    }
+
+    @Test
+    public void test_findDrawingByOperationName_fail() {
+        //given
+        String operationName = "x";
+
+        //when
+        Optional<DrawingEnum> drawingByOperationName = findDrawingByOperationName(operationName);
+
+        //then
+        assertFalse(drawingByOperationName.isPresent());
+    }
+
+
+    /**
+     * FIND OPERATION
+     */
 
     @Test
     public void test_findOperationName_SucessNoParameters() throws WrongCommandException {
@@ -90,7 +126,9 @@ public class CommandControllerTest {
         findOperation(command);
     }
 
-    /** FIND PARAMETERS */
+    /**
+     * FIND PARAMETERS
+     */
 
     @Test
     public void test_findParameters_SucessNoParameters() throws WrongCommandException {
