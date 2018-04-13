@@ -1,8 +1,8 @@
-package com.jkudla.command;
+package com.jkudla.drawingTest;
 
-import com.jkudla.command.command.CommandConstants;
-import com.jkudla.command.command.CommandController;
-import com.jkudla.command.exception.WrongCommandException;
+import com.jkudla.drawingTest.command.CommandConstants;
+import com.jkudla.drawingTest.command.CommandController;
+import com.jkudla.drawingTest.exception.WrongCommandException;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class DrawingApplication {
 
-    private static final String ENTER_COMMAND = "Enter command: ";
+    private static final String ENTER_COMMAND = "Enter drawingTest: ";
 
 
     public static void main(String[] args) {
@@ -22,7 +22,7 @@ public class DrawingApplication {
 
         showInitialLine(out);
         while(scanner.hasNextLine()){
-            String command = getTrimmedAndUpperCasedCommand(scanner);
+            String command = scanner.next();
             if(command.equals(CommandConstants.QUIT)){
                 return;
             }
@@ -37,9 +37,5 @@ public class DrawingApplication {
 
     private static void showInitialLine(PrintStream out) {
         out.println(ENTER_COMMAND);
-    }
-
-    private static String getTrimmedAndUpperCasedCommand(Scanner scanner) {
-        return scanner.next().trim().toUpperCase();
     }
 }
