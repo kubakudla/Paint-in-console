@@ -24,9 +24,9 @@ public class LineValidator extends AbstractValidator implements Validator {
     @Override
     public void validate(List<String> parameters) throws WrongParametersException {
         super.validate(parameters);
-        if (!areXParametersCorrect(parameters)) {
+        if (!areX1X2ParametersCorrect(parameters.get(X1), parameters.get(X2))) {
             throw new WrongParametersException(WRONG_PARAMETERS_X);
-        } else if (!areYParametersCorrect(parameters)) {
+        } else if (!areY1Y2ParametersCorrect(parameters.get(Y1), parameters.get(Y2))) {
             throw new WrongParametersException(WRONG_PARAMETERS_Y);
         } else if (!isItCorrectLine(parameters)) {
             throw new WrongParametersException(WRONG_PARAMETERS_HORIZONAL_OR_VERTICAL_ONLY);
@@ -41,16 +41,6 @@ public class LineValidator extends AbstractValidator implements Validator {
         return isItVerticalLine(x1, x2, y1, y2)
             || isItHorizontalLine(x1, x2, y1, y2)
             || isItAPoint(x1, x2, y1, y2);
-    }
-
-    private boolean areXParametersCorrect(List<String> parameters) {
-        return isXCorrect(parameters.get(X1))
-            && isXCorrect(parameters.get(X2));
-    }
-
-    private boolean areYParametersCorrect(List<String> parameters) {
-        return isYCorrect(parameters.get(Y1))
-            && isYCorrect(parameters.get(Y2));
     }
 
     private boolean isItVerticalLine(int x1, int x2, int y1, int y2) {

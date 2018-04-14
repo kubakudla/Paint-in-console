@@ -38,6 +38,20 @@ public class LineValidatorTest {
     }
 
     @Test
+    public void test_validateLineParameters_failNotEnoughParameters() throws WrongParametersException {
+        thrown.expect(WrongParametersException.class);
+        thrown.expectMessage(WRONG_NB_OF_PARAMETERS);
+        lineValidator.validate(Arrays.asList("8", "2", "5"));
+    }
+
+    @Test
+    public void test_validateLineParameters_failTooManyParameters() throws WrongParametersException {
+        thrown.expect(WrongParametersException.class);
+        thrown.expectMessage(WRONG_NB_OF_PARAMETERS);
+        lineValidator.validate(Arrays.asList("8", "2", "5", "2", "3"));
+    }
+
+    @Test
     public void test_validateLineParameters_failHorizontalLineX1BiggerThanX2() throws WrongParametersException {
         thrown.expect(WrongParametersException.class);
         thrown.expectMessage(WRONG_PARAMETERS_HORIZONAL_OR_VERTICAL_ONLY);
@@ -97,20 +111,6 @@ public class LineValidatorTest {
     public void test_validateLineParameters_failTooBigY2() throws WrongParametersException {
         thrown.expect(WrongParametersException.class);
         thrown.expectMessage(WRONG_PARAMETERS_Y);
-        lineValidator.validate(Arrays.asList("8", "" + "3", "5", "" + BOARD_MAX_Y));
-    }
-
-    @Test
-    public void test_validateLineParameters_failNotEnoughParameters() throws WrongParametersException {
-        thrown.expect(WrongParametersException.class);
-        thrown.expectMessage(WRONG_NB_OF_PARAMETERS);
-        lineValidator.validate(Arrays.asList("8", "2", "5"));
-    }
-
-    @Test
-    public void test_validateLineParameters_failTooManyParameters() throws WrongParametersException {
-        thrown.expect(WrongParametersException.class);
-        thrown.expectMessage(WRONG_NB_OF_PARAMETERS);
-        lineValidator.validate(Arrays.asList("8", "2", "5", "2", "3"));
+        lineValidator.validate(Arrays.asList("8", "3", "5", "" + BOARD_MAX_Y));
     }
 }

@@ -1,4 +1,4 @@
-package com.jkudla.drawingTest.drawing.line;
+package com.jkudla.drawingTest.drawing.rectangle;
 
 import com.jkudla.drawingTest.board.Board;
 import com.jkudla.drawingTest.drawing.AbstractDrawing;
@@ -6,7 +6,7 @@ import com.jkudla.drawingTest.drawing.Drawing;
 
 import java.util.List;
 
-public class Line extends AbstractDrawing implements Drawing {
+public class Rectangle extends AbstractDrawing implements Drawing {
 
     static final char DRAW_SIGN = 'x';
 
@@ -23,10 +23,10 @@ public class Line extends AbstractDrawing implements Drawing {
         int x2 = Integer.parseInt(parameters.get(X2));
         int y2 = Integer.parseInt(parameters.get(Y2));
 
-        if (x1 == x2) {
-            drawVerticalLine(board, x1, y1, y2, DRAW_SIGN);
-        } else if (y1 == y2) {
-            drawHorizontalLine(board, x1, x2, y1, DRAW_SIGN);
-        }
+        drawHorizontalLine(board, x1, x2, y1, DRAW_SIGN);
+        drawHorizontalLine(board, x1, x2, y2, DRAW_SIGN);
+
+        drawVerticalLine(board, x1, y1, y2, DRAW_SIGN);
+        drawVerticalLine(board, x2, y1, y2, DRAW_SIGN);
     }
 }

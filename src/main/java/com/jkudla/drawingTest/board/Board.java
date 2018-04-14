@@ -9,23 +9,23 @@ public class Board {
 
     public static final char EMPTY_SIGN = ' ';
 
-    private char boardArray[][] = new char[BOARD_MAX_Y][BOARD_MAX_X];
+    private char boardArray[][] = new char[BOARD_MAX_Y + 1][BOARD_MAX_X + 1];
 
     public Board() {
         initEmptyBoard();
     }
 
     private void initEmptyBoard() {
-        for (int i = BOARD_MIN_Y; i < BOARD_MAX_Y; i++) {
-            for (int j = BOARD_MIN_X; j < BOARD_MAX_X; j++) {
+        for (int i = BOARD_MIN_Y; i <= BOARD_MAX_Y; i++) {
+            for (int j = BOARD_MIN_X; j <= BOARD_MAX_X; j++) {
                 boardArray[i][j] = EMPTY_SIGN;
             }
         }
     }
 
     public void print() {
-        for (int i = BOARD_MIN_Y; i < BOARD_MAX_Y; i++) {
-            for (int j = BOARD_MIN_X; j < BOARD_MAX_X; j++) {
+        for (int i = BOARD_MIN_Y; i <= BOARD_MAX_Y; i++) {
+            for (int j = BOARD_MIN_X; j <= BOARD_MAX_X; j++) {
                 System.out.print(boardArray[i][j]);
             }
             System.out.println();

@@ -13,9 +13,9 @@ import static com.jkudla.drawingTest.util.ParameterUtil.isIntegerOfSize;
 public abstract class AbstractValidator {
 
     public static final Integer MIN_VAL_X = BOARD_MIN_X;
-    public static final Integer MAX_VAL_X = BOARD_MAX_X - 1;
+    public static final Integer MAX_VAL_X = BOARD_MAX_X;
     public static final Integer MIN_VAL_Y = BOARD_MIN_Y;
-    public static final Integer MAX_VAL_Y = BOARD_MAX_Y - 1;
+    public static final Integer MAX_VAL_Y = BOARD_MAX_Y;
 
     private int nbOfParameters;
 
@@ -31,6 +31,14 @@ public abstract class AbstractValidator {
         if (parameters.size() != nbOfParameters) {
             throw new WrongParametersException(WRONG_NB_OF_PARAMETERS + nbOfParameters);
         }
+    }
+
+    protected boolean areX1X2ParametersCorrect(String x1, String x2) {
+        return isXCorrect(x1) && isXCorrect(x2);
+    }
+
+    protected boolean areY1Y2ParametersCorrect(String y1, String y2) {
+        return isYCorrect(y1) && isYCorrect(y2);
     }
 
     protected boolean isXCorrect(String x) {

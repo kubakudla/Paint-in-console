@@ -5,13 +5,16 @@ import com.jkudla.drawingTest.drawing.canvas.Canvas;
 import com.jkudla.drawingTest.drawing.canvas.CanvasValidator;
 import com.jkudla.drawingTest.drawing.line.Line;
 import com.jkudla.drawingTest.drawing.line.LineValidator;
+import com.jkudla.drawingTest.drawing.rectangle.Rectangle;
+import com.jkudla.drawingTest.drawing.rectangle.RectangleValidator;
 import com.jkudla.drawingTest.exception.WrongParametersException;
 
 import java.util.List;
 
 public enum DrawingEnum {
     LINE("L", new Line(), new LineValidator()),
-    CANVAS("C", new Canvas(), new CanvasValidator());
+    CANVAS("C", new Canvas(), new CanvasValidator()),
+    RECTANGLE("R", new Rectangle(), new RectangleValidator());
 
     private String operation;
 
