@@ -90,27 +90,27 @@ public class LineValidatorTest {
     public void test_validateLineParameters_failTooBigX1() throws WrongParametersException {
         thrown.expect(WrongParametersException.class);
         thrown.expectMessage(WRONG_PARAMETERS_X);
-        lineValidator.validate(Arrays.asList("" + BOARD_MAX_X, "2", "5", "2"));
+        lineValidator.validate(Arrays.asList("" + (BOARD_MAX_X + 1), "2", "5", "2"));
     }
 
     @Test
     public void test_validateLineParameters_failTooBigY1() throws WrongParametersException {
         thrown.expect(WrongParametersException.class);
         thrown.expectMessage(WRONG_PARAMETERS_Y);
-        lineValidator.validate(Arrays.asList("8", "" + BOARD_MAX_Y, "5", "2"));
+        lineValidator.validate(Arrays.asList("8", "" + (BOARD_MAX_Y + 1), "5", "2"));
     }
 
     @Test
     public void test_validateLineParameters_failTooBigX2() throws WrongParametersException {
         thrown.expect(WrongParametersException.class);
         thrown.expectMessage(WRONG_PARAMETERS_X);
-        lineValidator.validate(Arrays.asList("1", "2", "" + BOARD_MAX_X, "2"));
+        lineValidator.validate(Arrays.asList("1", "2", "" + (BOARD_MAX_X + 1), "2"));
     }
 
     @Test
     public void test_validateLineParameters_failTooBigY2() throws WrongParametersException {
         thrown.expect(WrongParametersException.class);
         thrown.expectMessage(WRONG_PARAMETERS_Y);
-        lineValidator.validate(Arrays.asList("8", "3", "5", "" + BOARD_MAX_Y));
+        lineValidator.validate(Arrays.asList("8", "3", "5", "" + (BOARD_MAX_Y + 1)));
     }
 }

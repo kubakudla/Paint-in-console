@@ -24,6 +24,5 @@ public class Canvas extends AbstractDrawing implements Drawing {
 
         drawVerticalLine(board, 0, 1, height, DRAW_SIGN_Y);
         drawVerticalLine(board, width + 1, 1, height, DRAW_SIGN_Y);
-
     }
 }

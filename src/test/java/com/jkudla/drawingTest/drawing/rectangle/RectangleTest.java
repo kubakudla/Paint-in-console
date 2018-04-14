@@ -30,7 +30,7 @@ public class RectangleTest {
         int y2 = 6;
 
         //when
-        rectangle.draw(board, Arrays.asList("" + x1, "" + y1, ""+ x2, "" + y2));
+        rectangle.draw(board, Arrays.asList("" + x1, "" + y1, "" + x2, "" + y2));
         char[][] boardArray = board.getBoardArray();
 
         //then
@@ -46,7 +46,7 @@ public class RectangleTest {
         int y2 = 2;
 
         //when
-        rectangle.draw(board, Arrays.asList("" + x1, "" + y1, ""+ x2, "" + y2));
+        rectangle.draw(board, Arrays.asList("" + x1, "" + y1, "" + x2, "" + y2));
         char[][] boardArray = board.getBoardArray();
 
         //then

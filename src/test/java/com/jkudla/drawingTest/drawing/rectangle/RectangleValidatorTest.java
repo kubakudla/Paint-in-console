@@ -64,28 +64,27 @@ public class RectangleValidatorTest {
     public void test_validateRectangleParameters_failTooBigX1() throws WrongParametersException {
         thrown.expect(WrongParametersException.class);
         thrown.expectMessage(WRONG_PARAMETERS_X);
-        rectangleValidator.validate(Arrays.asList("" + BOARD_MAX_X, "2", "5", "4"));
+        rectangleValidator.validate(Arrays.asList("" + (BOARD_MAX_X + 1), "2", "5", "4"));
     }
 
     @Test
     public void test_validateRectangleParameters_failTooBigY1() throws WrongParametersException {
         thrown.expect(WrongParametersException.class);
         thrown.expectMessage(WRONG_PARAMETERS_Y);
-        rectangleValidator.validate(Arrays.asList("1", "" + BOARD_MAX_Y, "5", "2"));
+        rectangleValidator.validate(Arrays.asList("1", "" + (BOARD_MAX_Y + 1), "5", "2"));
     }
 
     @Test
     public void test_validateRectangleParameters_failTooBigX2() throws WrongParametersException {
         thrown.expect(WrongParametersException.class);
         thrown.expectMessage(WRONG_PARAMETERS_X);
-        rectangleValidator.validate(Arrays.asList("1", "2", "" + BOARD_MAX_X, "5"));
+        rectangleValidator.validate(Arrays.asList("1", "2", "" + (BOARD_MAX_X + 1), "5"));
     }
 
     @Test
     public void test_validateRectangleParameters_failTooBigY2() throws WrongParametersException {
         thrown.expect(WrongParametersException.class);
         thrown.expectMessage(WRONG_PARAMETERS_Y);
-        rectangleValidator.validate(Arrays.asList("8", "3", "5", "" + BOARD_MAX_Y));
+        rectangleValidator.validate(Arrays.asList("8", "3", "5", "" + (BOARD_MAX_Y + 1)));
     }
-
 }

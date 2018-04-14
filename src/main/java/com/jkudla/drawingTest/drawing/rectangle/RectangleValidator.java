@@ -2,7 +2,6 @@ package com.jkudla.drawingTest.drawing.rectangle;
 
 import com.jkudla.drawingTest.drawing.AbstractValidator;
 import com.jkudla.drawingTest.drawing.Validator;
-import com.jkudla.drawingTest.drawing.line.Line;
 import com.jkudla.drawingTest.exception.WrongParametersException;
 
 import java.util.List;
