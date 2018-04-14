@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 import static com.jkudla.drawingTest.board.Board.EMPTY_SIGN;
 import static com.jkudla.drawingTest.drawing.line.Line.DRAW_SIGN;
@@ -23,27 +24,35 @@ public class LineTest {
 
     @Test
     public void test_drawAHorizontalLine() {
-        line.draw(board, Arrays.asList("1", "2", "5", "2"));
+        //given
+        int x1 = 1;
+        int x2 = 5;
+        int y = 2;
+
+        //when
+        line.draw(board, Arrays.asList("" + x1, "" + y, "" + x2, "" + y));
         char[][] boardArray = board.getBoardArray();
-        assertEquals(EMPTY_SIGN, boardArray[2][0]);
-        assertEquals(DRAW_SIGN, boardArray[2][1]);
-        assertEquals(DRAW_SIGN, boardArray[2][2]);
-        assertEquals(DRAW_SIGN, boardArray[2][3]);
-        assertEquals(DRAW_SIGN, boardArray[2][4]);
-        assertEquals(DRAW_SIGN, boardArray[2][5]);
-        assertEquals(DRAW_SIGN, boardArray[2][5]);
-        assertEquals(EMPTY_SIGN, boardArray[2][6]);
+
+        //then
+        IntStream.range(x1, x2 + 1).forEach(x -> assertEquals(DRAW_SIGN, boardArray[y][x]));
+        assertEquals(EMPTY_SIGN, boardArray[y][x1 - 1]);
+        assertEquals(EMPTY_SIGN, boardArray[y][x2 + 1]);
     }
 
     @Test
     public void test_drawAVerticalLine() {
-        line.draw(board, Arrays.asList("3", "4", "3", "7"));
+        //given
+        int x = 3;
+        int y1 = 4;
+        int y2 = 7;
+
+        //when
+        line.draw(board, Arrays.asList("" + x, "" + y1, "" + x, "" + y2));
         char[][] boardArray = board.getBoardArray();
-        assertEquals(EMPTY_SIGN, boardArray[3][3]);
-        assertEquals(DRAW_SIGN, boardArray[4][3]);
-        assertEquals(DRAW_SIGN, boardArray[5][3]);
-        assertEquals(DRAW_SIGN, boardArray[6][3]);
-        assertEquals(DRAW_SIGN, boardArray[7][3]);
-        assertEquals(EMPTY_SIGN, boardArray[2][3]);
+
+        //then
+        IntStream.range(y1, y2 + 1).forEach(y -> assertEquals(DRAW_SIGN, boardArray[y][x]));
+        assertEquals(EMPTY_SIGN, boardArray[y1-1][x]);
+        assertEquals(EMPTY_SIGN, boardArray[y2+1][x]);
     }
 }

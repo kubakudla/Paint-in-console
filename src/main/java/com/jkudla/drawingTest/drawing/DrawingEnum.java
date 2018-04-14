@@ -1,6 +1,8 @@
 package com.jkudla.drawingTest.drawing;
 
 import com.jkudla.drawingTest.board.Board;
+import com.jkudla.drawingTest.drawing.canvas.Canvas;
+import com.jkudla.drawingTest.drawing.canvas.CanvasValidator;
 import com.jkudla.drawingTest.drawing.line.Line;
 import com.jkudla.drawingTest.drawing.line.LineValidator;
 import com.jkudla.drawingTest.exception.WrongParametersException;
@@ -8,7 +10,8 @@ import com.jkudla.drawingTest.exception.WrongParametersException;
 import java.util.List;
 
 public enum DrawingEnum {
-    LINE("L", new Line(), new LineValidator());
+    LINE("L", new Line(), new LineValidator()),
+    CANVAS("C", new Canvas(), new CanvasValidator());
 
     private String operation;
 
