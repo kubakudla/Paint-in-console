@@ -52,7 +52,22 @@ public class LineTest {
 
         //then
         IntStream.range(y1, y2 + 1).forEach(y -> assertEquals(DRAW_SIGN, boardArray[y][x]));
-        assertEquals(EMPTY_SIGN, boardArray[y1-1][x]);
-        assertEquals(EMPTY_SIGN, boardArray[y2+1][x]);
+        assertEquals(EMPTY_SIGN, boardArray[y1 - 1][x]);
+        assertEquals(EMPTY_SIGN, boardArray[y2 + 1][x]);
+    }
+
+    @Test
+    public void test_drawAPoint() {
+        //given
+        int x = 0;
+        int y = 1;
+
+        //when
+        line.draw(board, Arrays.asList("" + x, "" + y, "" + x, "" + y));
+        char[][] boardArray = board.getBoardArray();
+
+        //then
+        assertEquals(DRAW_SIGN, boardArray[y][x]);
+        assertEquals(EMPTY_SIGN, boardArray[y][x + 1]);
     }
 }

@@ -19,7 +19,7 @@ public class CanvasValidator extends AbstractValidator implements Validator {
 
     public static final String WRONG_PARAMETERS_W = "Wrong width parameter, accepted are values from: " + MIN_VAL_X + " to: " + MAX_VAL_X;
 
-    public static final String WRONG_PARAMETERS_H = "Wrong height ( parameter, accepted are values from: " + MIN_HEIGHT + " to: " + MAX_HEIGHT;
+    public static final String WRONG_PARAMETERS_H = "Wrong height parameter, accepted are values from: " + MIN_HEIGHT + " to: " + MAX_HEIGHT;
 
     public CanvasValidator() {
         super(NB_OF_PARAMETERS);

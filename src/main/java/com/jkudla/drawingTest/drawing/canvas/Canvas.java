@@ -19,12 +19,11 @@ public class Canvas extends AbstractDrawing implements Drawing {
         int width = Integer.parseInt(parameters.get(W));
         int height = Integer.parseInt(parameters.get(H));
 
-        //TODO: popraw dla malych wartosci
-        drawHorizontalLine(board, 0, width, 0, DRAW_SIGN_X);
-        drawHorizontalLine(board, 0, width, height + 1, DRAW_SIGN_X);
+        drawHorizontalLine(board, 0, width + 1, 0, DRAW_SIGN_X);
+        drawHorizontalLine(board, 0, width + 1, height + 1, DRAW_SIGN_X);
 
         drawVerticalLine(board, 0, 1, height, DRAW_SIGN_Y);
-        drawVerticalLine(board, width, 1, height, DRAW_SIGN_Y);
+        drawVerticalLine(board, width + 1, 1, height, DRAW_SIGN_Y);
 
     }
 }

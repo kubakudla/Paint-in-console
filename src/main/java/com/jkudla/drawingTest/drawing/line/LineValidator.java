@@ -28,13 +28,19 @@ public class LineValidator extends AbstractValidator implements Validator {
             throw new WrongParametersException(WRONG_PARAMETERS_X);
         } else if (!areYParametersCorrect(parameters)) {
             throw new WrongParametersException(WRONG_PARAMETERS_Y);
-        } else if (!isItHorizontalOrVerticalLine(parameters)) {
+        } else if (!isItCorrectLine(parameters)) {
             throw new WrongParametersException(WRONG_PARAMETERS_HORIZONAL_OR_VERTICAL_ONLY);
         }
     }
 
-    private boolean isItHorizontalOrVerticalLine(List<String> parameters) {
-        return x1EqualsX2(parameters) || y1EqualsY2(parameters);
+    private boolean isItCorrectLine(List<String> parameters) {
+        int x1 = Integer.parseInt(parameters.get(X1));
+        int x2 = Integer.parseInt(parameters.get(X2));
+        int y1 = Integer.parseInt(parameters.get(Y1));
+        int y2 = Integer.parseInt(parameters.get(Y2));
+        return isItVerticalLine(x1, x2, y1, y2)
+            || isItHorizontalLine(x1, x2, y1, y2)
+            || isItAPoint(x1, x2, y1, y2);
     }
 
     private boolean areXParametersCorrect(List<String> parameters) {
@@ -47,19 +53,15 @@ public class LineValidator extends AbstractValidator implements Validator {
             && isYCorrect(parameters.get(Y2));
     }
 
-    private boolean x1EqualsX2(List<String> parameters) {
-        int x1 = Integer.parseInt(parameters.get(X1));
-        int x2 = Integer.parseInt(parameters.get(X2));
-        int y1 = Integer.parseInt(parameters.get(Y1));
-        int y2 = Integer.parseInt(parameters.get(Y2));
+    private boolean isItVerticalLine(int x1, int x2, int y1, int y2) {
         return x1 == x2 && y2 > y1;
     }
 
-    private boolean y1EqualsY2(List<String> parameters) {
-        int x1 = Integer.parseInt(parameters.get(X1));
-        int x2 = Integer.parseInt(parameters.get(X2));
-        int y1 = Integer.parseInt(parameters.get(Y1));
-        int y2 = Integer.parseInt(parameters.get(Y2));
+    private boolean isItHorizontalLine(int x1, int x2, int y1, int y2) {
         return y1 == y2 && x2 > x1;
+    }
+
+    private boolean isItAPoint(int x1, int x2, int y1, int y2) {
+        return x1 == x2 && y1 == y1;
     }
 }
