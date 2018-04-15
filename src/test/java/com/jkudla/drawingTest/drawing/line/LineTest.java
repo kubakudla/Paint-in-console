@@ -7,6 +7,8 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
+import static com.jkudla.drawingTest.board.Board.BOARD_MAX_X;
+import static com.jkudla.drawingTest.board.Board.BOARD_MAX_Y;
 import static com.jkudla.drawingTest.board.Board.EMPTY_SIGN;
 import static com.jkudla.drawingTest.drawing.line.Line.DRAW_SIGN;
 import static org.junit.Assert.assertEquals;
@@ -40,6 +42,21 @@ public class LineTest {
     }
 
     @Test
+    public void test_drawLongestHorizontalLine() {
+        //given
+        int x1 = 0;
+        int x2 = BOARD_MAX_X;
+        int y = 0;
+
+        //when
+        line.draw(board, Arrays.asList("" + x1, "" + y, "" + x2, "" + y));
+        char[][] boardArray = board.getBoardArray();
+
+        //then
+        IntStream.range(0, BOARD_MAX_X + 1).forEach(x -> assertEquals(DRAW_SIGN, boardArray[y][x]));
+    }
+
+    @Test
     public void test_drawAVerticalLine() {
         //given
         int x = 3;
@@ -54,6 +71,21 @@ public class LineTest {
         IntStream.range(y1, y2 + 1).forEach(y -> assertEquals(DRAW_SIGN, boardArray[y][x]));
         assertEquals(EMPTY_SIGN, boardArray[y1 - 1][x]);
         assertEquals(EMPTY_SIGN, boardArray[y2 + 1][x]);
+    }
+
+    @Test
+    public void test_drawLongestVerticalLine() {
+        //given
+        int x = 0;
+        int y1 = 0;
+        int y2 = BOARD_MAX_Y;
+
+        //when
+        line.draw(board, Arrays.asList("" + x, "" + y1, "" + x, "" + y2));
+        char[][] boardArray = board.getBoardArray();
+
+        //then
+        IntStream.range(0, BOARD_MAX_Y + 1).forEach(y -> assertEquals(DRAW_SIGN, boardArray[y][x]));
     }
 
     @Test

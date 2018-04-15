@@ -14,7 +14,7 @@ import static com.jkudla.drawingTest.drawing.rectangle.Rectangle.Y2;
 public class RectangleValidator extends AbstractValidator implements Validator {
 
     private static final int NB_OF_PARAMETERS = 4;
-    static final String WRONG_PARAMETERS_NOT_A_RECTANGLE = "Wrong parameters - can't form a rectangle";
+    static final String WRONG_PARAMETERS_NOT_A_RECTANGLE = "Wrong coordinates - can't form a rectangle";
 
     public RectangleValidator() {
         super(NB_OF_PARAMETERS);

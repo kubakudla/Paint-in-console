@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static com.jkudla.drawingTest.command.CommandController.ALLOWED_OPERATIONS;
 import static com.jkudla.drawingTest.command.CommandController.MAX_OPERATION_LENGTH;
 import static com.jkudla.drawingTest.command.CommandController.NO_OPERATION;
 import static com.jkudla.drawingTest.command.CommandController.findDrawingByOperationName;
@@ -100,7 +101,7 @@ public class CommandControllerTest {
 
         //then
         thrown.expect(WrongCommandException.class);
-        thrown.expectMessage(NO_OPERATION);
+        thrown.expectMessage(NO_OPERATION + ALLOWED_OPERATIONS);
         findOperation(command);
     }
 
@@ -111,7 +112,7 @@ public class CommandControllerTest {
 
         //then
         thrown.expect(WrongCommandException.class);
-        thrown.expectMessage(NO_OPERATION);
+        thrown.expectMessage(NO_OPERATION + ALLOWED_OPERATIONS);
         findOperation(command);
     }
 
@@ -122,7 +123,7 @@ public class CommandControllerTest {
 
         //then
         thrown.expect(WrongCommandException.class);
-        thrown.expectMessage(NO_OPERATION);
+        thrown.expectMessage(NO_OPERATION + ALLOWED_OPERATIONS);
         findOperation(command);
     }
 

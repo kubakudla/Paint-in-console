@@ -9,6 +9,8 @@ import java.util.stream.IntStream;
 
 import static com.jkudla.drawingTest.drawing.canvas.Canvas.DRAW_SIGN_X;
 import static com.jkudla.drawingTest.drawing.canvas.Canvas.DRAW_SIGN_Y;
+import static com.jkudla.drawingTest.drawing.canvas.CanvasValidator.MAX_HEIGHT;
+import static com.jkudla.drawingTest.drawing.canvas.CanvasValidator.MAX_WIDTH;
 import static org.junit.Assert.assertEquals;
 
 public class CanvasTest {
@@ -41,6 +43,20 @@ public class CanvasTest {
         //given
         int w = 0;
         int h = 1;
+
+        //when
+        canvas.draw(board, Arrays.asList("" + w, "" + h));
+        char[][] boardArray = board.getBoardArray();
+
+        //then
+        assertCanvasDrawn(w, h, boardArray);
+    }
+
+    @Test
+    public void test_drawBiggestCanvas() {
+        //given
+        int w = MAX_WIDTH;
+        int h = MAX_HEIGHT;
 
         //when
         canvas.draw(board, Arrays.asList("" + w, "" + h));
